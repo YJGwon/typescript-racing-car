@@ -33,6 +33,10 @@ export class Car {
         }
     }
 
+    hasPosition(position: number) {
+        return this.position === position;
+    }
+
     getPosition() {
         return this.position;
     }

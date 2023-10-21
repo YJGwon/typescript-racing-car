@@ -33,3 +33,11 @@ describe('자동차는', () => {
         expect(car.getPosition()).toBe(initialPosition);
     });
 });
+
+describe('자동차는', () => {
+    test('위치가 주어진 값과 같은지 판단할 수 있다', () => {
+        const car = new Car("forky", () => true, 3);
+
+        expect(car.hasPosition(3)).toBe(true);
+    });
+});

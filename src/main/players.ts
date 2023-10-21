@@ -19,4 +19,14 @@ export class Players {
     private countUniqueNames(cars: Car[]) {
         return new Set(cars.map(it => it.name)).size;
     }
+
+
+    getWinners() {
+        const maxPosition = this.getMaxPosition();
+        return this.cars.filter(it => it.hasPosition(maxPosition));
+    }
+
+    private getMaxPosition() {
+        return Math.max(...(this.cars.map(it => it.getPosition())));
+    }
 }
