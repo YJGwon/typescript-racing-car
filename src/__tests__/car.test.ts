@@ -9,4 +9,9 @@ describe('자동차는', () => {
         expect(() => new Car("123456"))
             .toThrowError("이름은 5글자를 초과할 수 없어요");
     });
+
+    test('공백을 포함하는 이름을 가질 수 없다', () => {
+        expect(() => new Car("for k"))
+            .toThrowError("이름은 공백을 포함할 수 없어요");
+    });
 });
