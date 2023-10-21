@@ -1,11 +1,13 @@
 export class Car {
     readonly name: string;
+    private position: number;
 
-    constructor(name: string) {
+    constructor(name: string, position: number = 0) {
         this.validateNameLength(name);
         this.validateNameIncludeBlank(name);
 
         this.name = name;
+        this.position = position;
     }
 
     private validateNameLength(name: string) {
@@ -18,5 +20,13 @@ export class Car {
         if (name.includes(' ')) {
             throw new Error("이름은 공백을 포함할 수 없어요");
         }
+    }
+
+    move() {
+        this.position++;
+    }
+
+    getPosition() {
+        return this.position;
     }
 }

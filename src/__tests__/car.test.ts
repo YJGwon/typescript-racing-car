@@ -15,3 +15,13 @@ describe('자동차는', () => {
             .toThrowError("이름은 공백을 포함할 수 없어요");
     });
 });
+
+describe('자동차는', () => {
+    test('전진할 수 있다', () => {
+        const car = new Car("forky");
+        const initialPosition = car.getPosition();
+        car.move();
+
+        expect(car.getPosition()).toBe(initialPosition + 1);
+    });
+});
