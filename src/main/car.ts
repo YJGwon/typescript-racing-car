@@ -1,13 +1,18 @@
+import {DefaultMovingStrategy, MovingStrategy} from "./movingStrategy";
+
 export class Car {
     readonly name: string;
     private position: number;
 
-    constructor(name: string, position: number = 0) {
+    readonly movingStrategy: MovingStrategy;
+
+    constructor(name: string, movingStrategy: MovingStrategy = DefaultMovingStrategy, position: number = 0) {
         this.validateNameLength(name);
         this.validateNameIncludeBlank(name);
 
         this.name = name;
         this.position = position;
+        this.movingStrategy = movingStrategy;
     }
 
     private validateNameLength(name: string) {
@@ -23,7 +28,9 @@ export class Car {
     }
 
     move() {
-        this.position++;
+        if (this.movingStrategy()) {
+            this.position++;
+        }
     }
 
     getPosition() {

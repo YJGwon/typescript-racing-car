@@ -17,11 +17,19 @@ describe('자동차는', () => {
 });
 
 describe('자동차는', () => {
-    test('전진할 수 있다', () => {
-        const car = new Car("forky");
+    test('이동 전략을 만족하면 전진할 수 있다', () => {
+        const car = new Car("forky", () => true);
         const initialPosition = car.getPosition();
         car.move();
 
         expect(car.getPosition()).toBe(initialPosition + 1);
+    });
+
+    test('이동 전략을 만족하지 못하면 전진할 수 없다', () => {
+        const car = new Car("forky", () => false);
+        const initialPosition = car.getPosition();
+        car.move();
+
+        expect(car.getPosition()).toBe(initialPosition);
     });
 });
